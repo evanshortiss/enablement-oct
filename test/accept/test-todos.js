@@ -1,7 +1,7 @@
 'use strict';
 
 describe('todos api', function () {
-
+  var expect = require('chai').expect;
   var request, app;
 
   beforeEach(function () {
@@ -13,9 +13,16 @@ describe('todos api', function () {
 
   describe('list (GET /)', function () {
     it('should return a list of records', function (done) {
-      // TEST CODE HERE
-      // request.get('/todos')
-      done();
+      request.get('/todos')
+        .expect(200)
+        .expect('content-type', /json/)
+        .end(function (err, res) {
+          expect(err).to.be.null;
+          expect(res.body).to.be.an('object');
+          expect(res.body.count).to.be.a.number;
+          expect(res.body.list).to.be.an('array');
+          done();
+        });
     });
   });
 

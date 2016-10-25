@@ -4,6 +4,7 @@
       "describe": true,
       "beforeEach": true
     },
+    "expr"          : true,
     "asi"           : true,
     "camelcase"     : false,
     "bitwise"       : false,
